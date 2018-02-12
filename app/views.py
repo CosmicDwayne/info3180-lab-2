@@ -8,10 +8,14 @@ This file creates your application.
 from app import app
 from flask import render_template, request, redirect, url_for, flash
 
-
+import datetime
 ###
 # Routing for your application.
 ###
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
 
 @app.route('/')
 def home():
@@ -34,6 +38,10 @@ def send_text_file(file_name):
     """Send your static text file."""
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
+    
+def format_date_joined():
+    return datetime.date
+    
 
 
 @app.after_request
